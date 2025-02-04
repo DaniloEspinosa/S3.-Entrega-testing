@@ -1,4 +1,4 @@
-const movies = require('../src/data');
+const movies = require('./data');
 
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
@@ -43,12 +43,18 @@ function orderByYear(array) {
       if (a.title.toLowerCase() < b.title.toLowerCase()) return -1;
     })
     .map((item) => item);
-  console.log(result);
   return result;
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {}
+function moviesAverageByCategory(array, category) {
+  if (typeof category == "number") return 0
+  if(category == "") return 0
+  const genre = category[0].toUpperCase() + category.slice(1).toLowerCase()
+  const arrayCategory = array.filter((item) => item.genre.includes(`${genre}`))
+  const result = arrayCategory.reduce((acc, item) => acc + item.score, 0) / arrayCategory.length
+  return parseFloat(result.toFixed(2))
+}
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {}

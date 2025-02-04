@@ -294,7 +294,44 @@ describe('Function "orderByYear"', () => {
 // YOUR CODE HERE. Test moviesAverageByCategory()
 describe('Function "moviesAverageByCategory"', () => {
   it('ADD YOUR CODE IN films.spec.js file', () => {
-    expect(typeof hoursToMinutes).toBe('coffee');
+    // expect(typeof hoursToMinutes).toBe('coffee');
+    true
+  });
+  it(' should return the average score of movies by genre. With 2 decimals! ', () => {
+    expect(moviesAverageByCategory([
+      {
+          title: 'The Shawshank Redemption',
+          year: 1994,
+          director: 'Frank Darabont',
+          duration: '2h 22min',
+          genre: ['Crime', 'Drama'],
+          score: 9.3
+      },
+      {
+          title: 'The Godfather',
+          year: 1972,
+          director: 'Francis Ford Coppola',
+          duration: '2h 55min',
+          genre: ['Crime', 'Drama'],
+          score: 9.2
+      },
+      {
+          title: 'The Godfather: Part II',
+          year: 1974,
+          director: 'Francis Ford Coppola',
+          duration: '3h 22min',
+          genre: ['Crime', 'Drama'],
+          score: 9
+      }], 'Drama')).toBe(9.17);
+  });
+  it('should return a number', () => {
+    expect(typeof moviesAverageByCategory([], "drama")).toBe('number');
+  });
+  it('if category is "" should return a 0', () => {
+    expect(moviesAverageByCategory([], "")).toBe(0);
+  });
+  it('if category is a number should return a number', () => {
+    expect(typeof moviesAverageByCategory([], 0)).toBe('number');
   });
 });
 
