@@ -42,13 +42,29 @@
             const genre = category[0].toUpperCase() + category.slice(1).toLowerCase()
             const arrayCategory = array.filter((item) => item.genre.includes(`${genre}`))
             const result = arrayCategory.reduce((acc, item) => acc + item.score, 0) / arrayCategory.length
-            console.log(typeof(result))
+            console.log(typeof (result))
             return result.toFixed(2)
         }
 
         console.log(moviesAverageByCategory(movies, "DrAmA"))
 
+        function hoursToMinutes(array) {
+            const newArray = array.map((item) => {
+                let hours = Number(item.duration.split("h ")[0]) //Obtener la hora en numero
+                let minutes = Number(item.duration.split("h ")[1].slice(0, -3) )//Obtener los minutos en numero
+                let result = hours*60 + minutes
 
+                
+
+                return {...item, duration: result}
+            })
+            return newArray
+        }
+
+
+        hoursToMinutes(movies)
+
+        console.log(hoursToMinutes(movies) instanceof Array)
 
 
     </script>
